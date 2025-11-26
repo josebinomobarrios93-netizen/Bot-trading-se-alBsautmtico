@@ -3,9 +3,9 @@ import requests
 
 # --- TUS DATOS DE TELEGRAM ---
 # TU TOKEN:
-TOKEN = '7984885660:AAH1he9rHj_B1N2M8yLbppFR6AEFVuh1ASQ'
+TOKEN = 7984885660:AAH1he9rHj_B1N2M8yLbppFR6AEFVuh1ASQ
 # TU ID DE CHAT:
-CHAT_ID = '6785565632' 
+CHAT_ID =  '-1002161642865 
 # -----------------------------
 
 app = Flask(__name__)
