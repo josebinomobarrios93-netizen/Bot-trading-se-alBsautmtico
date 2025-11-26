@@ -1,11 +1,11 @@
 from flask import Flask, request, jsonify
 import requests
-import urllib.parse # Ya importado correctamente
+import urllib.parse 
 
 # --- TUS DATOS DE TELEGRAM ---
-# TU TOKEN: (QUITAMOS LA COMILLA Y EL NÚMERO DE LA LÍNEA DE ABAJO, DEBE ESTAR EN UNA SOLA LÍNEA)
+# TU TOKEN: 
 TOKEN = '7984885660:AAH1he9rHj_B1N2M8yLbppFR6AEFVuh1ASQ'
-# TU ID DE CHAT: (QUITAMOS EL SÍMBOLO # DEL VALOR DEL ID)
+# TU ID DE CHAT: 
 CHAT_ID = '-1002161642865'
 # -----------------------------
 
@@ -25,6 +25,13 @@ def enviar_mensaje_telegram(mensaje_texto):
         print(f"Mensaje enviado con éxito: {mensaje_texto}")
     except Exception as e:
         print(f"Error al enviar mensaje a Telegram: {e}")
+
+# RUTA TEMPORAL PARA PRUEBAS DE CONEXIÓN DEL NAVEGADOR (GET)
+# Esta ruta nos permite verificar que el TOKEN y el CHAT_ID funcionan sin enviar una señal POST.
+@app.route('/test', methods=['GET'])
+def test_connection():
+    enviar_mensaje_telegram("BOT DE PRUEBA: Conexión con Telegram exitosa!")
+    return jsonify({"status": "ok", "mensaje": "Mensaje de prueba enviado a Telegram"}), 200
 
 # Ruta que recibirá la señal (Webhook)
 @app.route('/recibir_senal', methods=['POST'])
