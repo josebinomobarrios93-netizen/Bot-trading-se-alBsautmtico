@@ -1,11 +1,12 @@
 from flask import Flask, request, jsonify
 import requests
+import urllib.parse # Ya importado correctamente
 
 # --- TUS DATOS DE TELEGRAM ---
-# TU TOKEN:
-TOKEN = 7984885660:'AAH1he9rHj_B1N2M8yLbppFR6AEFVuh1ASQ'
-# TU ID DE CHAT:
-CHAT_ID =  '#-1002161642865'
+# TU TOKEN: (QUITAMOS LA COMILLA Y EL NÚMERO DE LA LÍNEA DE ABAJO, DEBE ESTAR EN UNA SOLA LÍNEA)
+TOKEN = '7984885660:AAH1he9rHj_B1N2M8yLbppFR6AEFVuh1ASQ'
+# TU ID DE CHAT: (QUITAMOS EL SÍMBOLO # DEL VALOR DEL ID)
+CHAT_ID = '-1002161642865'
 # -----------------------------
 
 app = Flask(__name__)
@@ -17,7 +18,8 @@ def enviar_mensaje_telegram(mensaje_texto):
     from urllib.parse import quote_plus
     texto_codificado = quote_plus(mensaje_texto)
     
-    url = f'https://api.telegram.org/bot{TOKEN}/sendMessage?chat_id={CHAT_ID}&text={mensaje_codificado}'
+    # Concatenamos el TOKEN y el CHAT_ID correctamente
+    url = f'https://api.telegram.org/bot{TOKEN}/sendMessage?chat_id={CHAT_ID}&text={texto_codificado}' 
     try:
         requests.get(url) 
         print(f"Mensaje enviado con éxito: {mensaje_texto}")
