@@ -17,7 +17,7 @@ def enviar_mensaje_telegram(mensaje_texto):
     from urllib.parse import quote_plus
     texto_codificado = quote_plus(mensaje_texto)
     
-    url = f'https://api.telegram.org/bot{TOKEN}/sendMessage?chat_id={CHAT_ID}&text={texto_codificado}'
+    url = f'https://api.telegram.org/bot{TOKEN}/sendMessage?chat_id={CHAT_ID}&text={mensaje_codificado}'
     try:
         requests.get(url) 
         print(f"Mensaje enviado con éxito: {mensaje_texto}")
